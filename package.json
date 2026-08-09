@@ -1,0 +1,25 @@
+{
+  "name": "frame-in-goa-vanilla",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "HH Goa 2026 PFP frame + Builder ID generator — plain HTML/CSS/JS front end, Express back end.",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "start": "node src/server/server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "heic-to": "^1.5.2"
+  },
+  "optionalDependencies": {
+    "@vercel/blob": "^2.7.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.10"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

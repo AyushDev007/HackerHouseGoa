@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Frame In Goa — HACKER HOUSE GOA 2026</title>
+    <meta
+      name="description"
+      content="Upload a photo, get an official-looking Hacker House Goa 2026 PFP frame or Builder ID card in seconds. Download it, share it to X with #FrameInGoa."
+    />
+    <meta name="theme-color" content="#03301a" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Frame In Goa" />
+    <meta property="og:title" content="Frame In Goa — HACKER HOUSE GOA 2026" />
+    <meta
+      property="og:description"
+      content="Upload a photo, get an official-looking Hacker House Goa 2026 PFP frame or Builder ID card in seconds."
+    />
+    <!-- %ORIGIN% is substituted by the server: crawlers won't resolve a relative og:image. -->
+    <meta property="og:url" content="%ORIGIN%/" />
+    <meta property="og:image" content="%ORIGIN%/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href="/fonts/Imbue-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/VictorMono-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b6839'/><text y='72' x='50' text-anchor='middle' font-size='62' fill='%23fee101'>🌴</text></svg>" />
+  </head>
+
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+
+    <main>
+      <header class="page-head wrap">
+        <div class="page-head__bar">
+          <span class="wordmark">HH GOA<sup>2026</sup></span>
+          <a class="page-head__link" href="https://hhgoa.com" target="_blank" rel="noopener noreferrer">
+            hhgoa.com ↗
+          </a>
+        </div>
+
+        <p class="label page-head__meta">28 – 31 OCT 2026 · GOA, INDIA</p>
+        <h1 class="page-head__title">FRAME<br /><span>IN GOA</span></h1>
+        <p class="page-head__blurb">
+          Drop in a photo and walk out with a Hacker House Goa 2026 profile frame or builder pass. No signup, no
+          waiting — it renders on your device in about a second.
+        </p>
+        <p class="page-head__cta">Post it with #FrameInGoa</p>
+      </header>
+
+      <div class="wrap studio">
+        <!-- Format switch -->
+        <div class="switch" role="group" aria-label="Graphic format">
+          <button type="button" class="switch__btn is-active" data-format="pfp" aria-pressed="true">
+            <span class="switch__label">PFP Frame</span>
+            <span class="switch__hint">For your X avatar</span>
+          </button>
+          <button type="button" class="switch__btn" data-format="card" aria-pressed="false">
+            <span class="switch__label">Builder ID</span>
+            <span class="switch__hint">For your timeline</span>
+          </button>
+        </div>
+
+        <!-- Upload state -->
+        <section id="uploader" class="uploader">
+          <div id="dropzone" class="dropzone">
+            <button type="button" id="pick" class="dropzone__btn">
+              <span class="dropzone__icon" aria-hidden="true"><span id="pick-glyph">+</span></span>
+              <span class="dropzone__title" id="dropzone-title">Drop a photo in</span>
+              <span class="dropzone__sub">
+                JPG, PNG, WEBP or iPhone HEIC. Any shape — portrait, landscape, off-centre. We'll frame it for you.
+              </span>
+              <span class="label">Tap to choose</span>
+            </button>
+          </div>
+          <p id="upload-error" class="alert" role="alert" hidden></p>
+          <p class="fineprint">
+            Everything renders in your browser. Your photo only leaves this device if you choose “Share to X”.
+          </p>
+        </section>
+
+        <!-- Editor state -->
+        <section id="editor" class="editor" hidden>
+          <div class="editor__stage">
+            <div class="stage">
+              <canvas id="preview" role="img" aria-label="Preview of your Hacker House Goa 2026 graphic"></canvas>
+              <span id="stage-hint" class="stage__hint">Drag to reposition · pinch to zoom</span>
+            </div>
+            <p id="stage-note" class="fineprint">
+              X crops avatars to a circle — the ring is positioned to survive it.
+            </p>
+            <p id="render-error" class="alert" role="alert" hidden></p>
+          </div>
+
+          <aside class="panel">
+            <section class="ctrl">
+              <div class="ctrl__head">
+                <h2 class="label">Framing</h2>
+                <button type="button" id="autofit" class="linkbtn">Auto-fit</button>
+              </div>
+              <div class="slider">
+                <span aria-hidden="true">1x</span>
+                <input id="zoom" type="range" min="1" max="3" step="0.01" value="1" aria-label="Zoom" />
+                <span aria-hidden="true">3x</span>
+              </div>
+            </section>
+
+            <section class="ctrl">
+              <h2 class="label">Colourway</h2>
+              <div id="themes" class="themes"></div>
+            </section>
+
+            <div id="card-fields" hidden>
+              <section class="ctrl">
+                <label class="label" for="builder-name">Name</label>
+                <input id="builder-name" class="field" maxlength="28" placeholder="Your name" autocomplete="name" />
+              </section>
+
+              <section class="ctrl">
+                <label class="label" for="builder-role">Stack / role</label>
+                <input id="builder-role" class="field" maxlength="24" placeholder="Full-stack" />
+                <div id="role-chips" class="chips"></div>
+              </section>
+
+              <section class="ctrl">
+                <h2 class="label">Builder class</h2>
+                <div class="classrow">
+                  <p id="class-pill" class="classrow__pill"></p>
+                  <button type="button" id="reroll" class="classrow__btn" aria-label="Generate a different builder class">
+                    <span aria-hidden="true">⟳</span>
+                  </button>
+                </div>
+                <p class="fineprint fineprint--tight">Generated from your name — reroll until one fits.</p>
+              </section>
+            </div>
+
+            <hr class="rule" />
+
+            <section class="ctrl">
+              <div class="actions">
+                <button type="button" id="download" class="btn btn--primary">
+                  <span aria-hidden="true">↓</span> Download
+                </button>
+                <button type="button" id="share" class="btn btn--x">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  <span id="share-text">Share to X</span>
+                </button>
+              </div>
+              <p id="share-msg" class="fineprint" role="status" hidden></p>
+              <div id="share-link" class="linkrow" hidden>
+                <code id="share-url"></code>
+                <button type="button" id="copy" class="linkrow__btn">Copy</button>
+              </div>
+            </section>
+
+            <section class="ctrl">
+              <button type="button" id="swap" class="btn btn--ghost btn--block">Swap photo</button>
+              <p class="fineprint fineprint--center">#FrameInGoa · 28 – 31 OCT 2026</p>
+            </section>
+          </aside>
+        </section>
+      </div>
+
+      <footer class="wrap page-foot">
+        <p>LESS NOISE. MORE SIGNAL. — HACKER HOUSE GOA 2026, GOA, INDIA.</p>
+        <p>Built for Task #1 · 2:47 PM Studio</p>
+      </footer>
+    </main>
+
+    <input id="file" type="file" hidden />
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
