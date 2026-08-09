@@ -1,4 +1,4 @@
-# Frame In Goa — vanilla build
+# Frame In Goa 
 
 Upload a photo, get a branded **Hacker House Goa 2026** graphic, download it, post it with `#FrameInGoa`.
 
